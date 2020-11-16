@@ -95,7 +95,7 @@ module.exports = class AuthService {
               reject("Please fill out all required fields.");
             }
           } else {
-            let authUserHashed = new User(authUser.body.name,authUser.body.surName,authUser.body.cellPhone,authUser.body.email,hash(authUser.body.password,generateSalt(10)),authUser.body.role);
+            let authUserHashed = new User(authUser.name,authUser.surName,authUser.cellPhone,authUser.email, hash(authUser.password,generateSalt(10)),authUser.role);
             User.prototype
               .create(authUserHashed)
               .then(user => resolve(user))
