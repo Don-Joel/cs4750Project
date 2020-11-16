@@ -30,41 +30,7 @@
           (change)="onFileChange($event)"
         />
 
-        <div>
-          <div
-            *ngIf="fileAdded"
-            class="image image-container"
-            (click)="expandedImage = image.image"
-          >
-            <img class="img-upload" [src]="image" />
-            <div class="image-close-button text-danger" (click)="clearImage()">
-              <i class="fa fa-times"></i>
-            </div>
-          </div>
 
-          <div
-            *ngIf="!fileAdded && user.imgUrl != null"
-            class="image image-container"
-            title="Add Image"
-            (click)="fileInput.click()"
-          >
-            <img class="img-upload" [src]="user.imgUrl" />
-            <div class="image-close-button text-danger" (click)="clearImage()">
-              <i class="fa fa-times"></i>
-            </div>
-          </div>
-
-          <div
-            *ngIf="!fileAdded && user.imgUrl == null"
-            class="image image-container"
-            title="Profile Image"
-            (click)="fileInput.click()"
-          >
-            <ion-icon name="add"></ion-icon>
-          </div>
-        </div>
-
-        >
       </form>
     </ion-avatar>
 
@@ -79,7 +45,7 @@
     Joined in 2015
   </p>
   <h1>About</h1>
-  <p><ion-icon name="home"></ion-icon>Lives in Cape Town, South Africa</p>
+  <p><ion-icon name="home"></ion-icon>Lives in Charlottesville, VA</p>
   <p><ion-icon name="logo-facebook"></ion-icon>Facebook Connected</p>
   <div></div>
 
