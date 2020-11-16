@@ -5,6 +5,12 @@ const router = express.Router();
 
 const Provider = require("../model/provider-model");
 
+const {
+  generateSalt,
+  hash,
+  compare
+} = require('../services/hashing-service');
+
 //get all of the users
 router.get("/get", (req, res) => {
   Provider.prototype
@@ -31,8 +37,9 @@ router.get("/getbyid/:id", (req, res) => {
 
 //create the user
 router.post("/create", (req, res) => {
+  let provider = new Provider(req.body.name,req.body.lastName,req.body.cellPhone,req.body.email,hash(req.body.password,generateSalt(10)),req.body.role);
   Provider.prototype
-    .create(req.body)
+    .create(provider)
     .then(provider => {
       res.send(provider);
     })

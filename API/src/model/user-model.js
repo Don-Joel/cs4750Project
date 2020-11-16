@@ -1,28 +1,3 @@
-// const users = [
-//     {
-//         "id": "1",
-//         "name": "Byron",
-//         "role": "user",
-//         "email": "byron@mail.com",
-//         "password": "P@ssword"
-//     },
-//     {
-//         "id": "2",
-//         "name": "brett",
-//         "role": "service provider",
-//         "email": "brett@mail.com",
-//         "password": "P@ssword1"
-//     },
-//     {
-//         "id": "3",
-//         "name": "Riaz",
-//         "role": "user",
-//         "email": "riaz@mail.com",
-//         "password": "P@ssword2"
-//     }
-// ]
-
-//const fs = require('fs');
 const mysqlConn = require("../database/database");
 
 const roles = {
@@ -32,7 +7,7 @@ const roles = {
 };
 
 module.exports = class User {
-  constructor(surName, name, cellPhone, email, password, role) {
+  constructor(name, surName, cellPhone, email, password, role) {
     this.name = name;
     this.surName = surName;
     this.cellPhone = cellPhone;

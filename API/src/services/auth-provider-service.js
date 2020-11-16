@@ -6,6 +6,12 @@ const Provider = require("../model/provider-model");
 // //instantiate json web token
 // var jwt = require('jsonwebtoken');
 
+const {
+  generateSalt,
+  hash,
+  compare
+} = require('./hashing-service');
+
 module.exports = class AuthProviderService {
   constructor() {}
 
@@ -89,8 +95,9 @@ module.exports = class AuthProviderService {
               reject("Please fill out all required fields.");
             }
           } else {
+            let authUserHashed = new Provider(authUser.name,authUser.lastName,authUser.cellPhone,authUser.email, hash(authUser.password,generateSalt(10)),authUser.role);
             Provider.prototype
-              .create(authUser)
+              .create(authUserHashed)
               .then(user => resolve(user))
               .catch(err => reject(err));
           }
