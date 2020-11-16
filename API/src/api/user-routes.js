@@ -5,6 +5,12 @@ const router = express.Router();
 
 const User = require("../model/user-model");
 
+const {
+  generateSalt,
+  hash,
+  compare
+} = require('../services/hashing-service');
+
 //get all of the users
 router.get("/get", (req, res) => {
   User.prototype
@@ -31,8 +37,9 @@ router.get("/getbyid/:id", (req, res) => {
 
 //create the user
 router.post("/create", (req, res) => {
+  let user = new User(req.body.name,req.body.surName,req.body.cellPhone,req.body.email,hash(req.body.password,generateSalt(10)),req.body.role);
   User.prototype
-    .create(req.body)
+    .create(user)
     .then(users => {
       res.send(users);
     })
